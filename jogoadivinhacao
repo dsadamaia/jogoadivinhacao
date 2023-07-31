@@ -1,0 +1,28 @@
+#jogo da d adivinhação
+import random
+
+def guess_number():
+    print("Bem-vindo ao Jogo de Adivinhação!")
+    lower_bound = int(input("Digite o limite inferior do intervalo: "))
+    upper_bound = int(input("Digite o limite superior do intervalo: "))
+
+    secret_number = random.randint(lower_bound, upper_bound)
+
+    attempts = 0
+    while True:
+        try:
+            guess = int(input(f"Tente adivinhar o número entre {lower_bound} e {upper_bound}: "))
+            attempts += 1
+
+            if guess == secret_number:
+                print(f"Parabéns! Você acertou o número {secret_number} em {attempts} tentativas.")
+                break
+            elif guess < secret_number:
+                print("Tente novamente! O número é maior.")
+            else:
+                print("Tente novamente! O número é menor.")
+        except ValueError:
+            print("Por favor, digite um número válido.")
+
+if __name__ == "__main__":
+    guess_number()
